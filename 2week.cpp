@@ -126,6 +126,12 @@ void timerCallback(TimerID timer)
 		locateObject(barCh, main_scene, barCh_x, 680);
 		showObject(barCh);
 	}
+	if (barCh_x > 960) {
+		showMessage("Puang Run Complete!!");
+		barCh_x = 320;
+		enterScene(end_scene);
+	}
+	
 
 	setTimer(barTimer, 0.01f);	//바를 움직이는 시간 간격
 	startTimer(barTimer);	//바 타이머 시작
@@ -260,7 +266,7 @@ int main() {
 
 	start_scene = createScene("시작 화면", "images\\main_scene.png");
 	main_scene = createScene("게임 화면", "images\\main_scene.png");
-	end_scene = createScene("종료 화면", "images\\main_scene.png");
+	end_scene = createScene("종료 화면", "images\\end_scene.png");
 
 	setTimerCallback(timerCallback);
 	setKeyboardCallback(keyboardCallback);
